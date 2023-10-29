@@ -6,6 +6,8 @@ public class FractalMaster : MonoBehaviour
 
     public ComputeShader fractalShader;
 
+    public Camera cameraCurrent;
+
     [Range (1, 20)]
     public float fractalPower = 10f;
     public float darkness = 70f;
@@ -62,7 +64,7 @@ public class FractalMaster : MonoBehaviour
     
     void Init ()
     {
-        cam = Camera.current;
+        cam = cameraCurrent;// Camera.current;
         directionalLight = FindObjectOfType<Light> ();
 
         threadGroupsX = Mathf.CeilToInt(cam.pixelWidth / 64.0f);     //CREATING A THREAD FOR EACH PIXEL (/8 AS IT'S *8 IN THE SHADER)
